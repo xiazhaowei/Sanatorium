@@ -1,0 +1,26 @@
+﻿@model Sanatorium.Models.Article
+@{
+    ViewBag.Title = "文章详情";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="header">
+    <div class="left">
+        <a href="javascript:window.history.back();"><i class="fa fa-2x fa-angle-left"></i></a>
+    </div>
+    <div class="center">
+        文章内容
+    </div>
+    <div class="right">
+    </div>
+</div>
+
+
+
+<div class="articleinfo">
+    <h4>@Model.Title</h4>
+    <p>@Model.CreatedOn.ToShortDateString()</p>
+    <div class="htmlcontent">@(new HtmlString(Model.Content))</div>
+</div>
+
+

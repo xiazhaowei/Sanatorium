@@ -1,0 +1,136 @@
+﻿@model IEnumerable<Sanatorium.Models.Sanatorium>
+@{
+    ViewBag.Title = "项目列表";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="header">
+    <div class="left">
+        <a href="javascript:window.history.back();"><i class="fa fa-2x fa-angle-left"></i></a>
+    </div>
+    <div class="center">
+        项目列表-@ViewBag.name
+    </div>
+    <div class="right">
+    </div>
+</div>
+
+<form class="filterwp" id="filterform">
+    @*<div id="city">
+            <select class="prov" name="region"></select>
+            <select class="city" name="street" disabled="disabled"></select>
+            <select class="dist" name="community" disabled="disabled"></select>
+        </div>*@
+    <div class="drdown">@Html.DropDownList("region", (IEnumerable<SelectListItem>)ViewData["regions"], "选择地区", new { @class = "form-control", style = "display:inline-block !important; border-radius:0;" })</div>
+    <div class="drdown">@Html.DropDownList("street", (IEnumerable<SelectListItem>)ViewData["streets"], "选择街道", new { @class = "form-control", style = "display:inline-block !important; border-radius:0;" })</div>
+    <div class="drdown">@Html.DropDownList("community", (IEnumerable<SelectListItem>)ViewData["communitys"], "选择社区", new { @class = "form-control", style = "display:inline-block !important; border-radius:0;" })</div>
+</form>
+
+<div class="homexiangmu">
+    <div class="list">
+        @foreach (var item in Model)
+        {
+            <div class="item">
+                <a href="/Home/SanatoriumInfo/@item.Id">
+                    <img src="@item.Pics" />
+                </a>
+                <div>@Html.Truncate(item.Name, 20)</div>
+            </div>
+        }
+    </div>
+    @if (Model.Count() == 0)
+    {
+        <div class="emptybox">没有内容</div>
+    }
+</div>
+
+
+<div class="tabbar">
+    <div class="item">
+        <a href="/Home">
+            <img class="iconsvg" src="~/images/home_black.svg" />
+            <div>首页</div>
+        </a>
+    </div>
+    <div class="item">
+        <a href="/Home/SanatoriumList">
+            <img class="iconsvg" src="~/images/xiangmu_black.svg" />
+            <div>项目</div>
+        </a>
+    </div>
+    <div class="item">
+        <a href="#">
+            <img class="iconsvg" src="~/images/message_black.svg" />
+            <div>消息</div>
+        </a>
+    </div>
+    <div class="item">
+        <a href="#">
+            <img class="iconsvg" src="~/images/cart_black.svg" />
+            <div>购物车</div>
+        </a>
+    </div>
+    <div class="item">
+        <a href="#">
+            <img class="iconsvg" src="~/images/me_black.svg" />
+            <div>我</div>
+        </a>
+    </div>
+</div>
+
+
+@section scripts
+{
+    @Scripts.Render("~/Scripts/cityselect/js/jquery.cityselect.js")
+
+    <script>
+        $(document).ready(function () {
+            $("#city").citySelect({
+                url: {
+                    "citylist": [
+
+                        {
+                            "p": "市北区",
+                            "c": [
+                                {
+                                    "n": "张家港街道",
+                                    "a": [
+                                        {
+                                            "s": "宿迁社区"
+                                        },
+                                        {
+                                            "s": "张庄社区"
+                                        },
+                                        {
+                                            "s": "测试社区"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "n": "奎山街道",
+                                    "a": [
+                                        {
+                                            "s": "丽阳社区"
+                                        }
+                                    ]
+                                }
+
+                            ]
+                        }
+                    ]
+                },
+                prov: "市北区",
+                city: "张家港街道",
+                dist: "宿迁社区",
+                nodata: ""
+            });
+            //$("prov,.city,.dist").change(function () {
+            //    $("#filterform").submit();
+            //});
+            $("#region,#street,#community").change(function () {
+                $("#filterform").submit();
+            });
+        });
+    </script>
+}
+

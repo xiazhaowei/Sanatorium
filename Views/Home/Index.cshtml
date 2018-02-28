@@ -1,0 +1,121 @@
+﻿@model Sanatorium.Models.HomeViewModels
+@{
+    ViewBag.Title = "青岛市节能建筑公示平台";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="searchbar">
+    <div class="left">
+        <img class="iconsvg" src="~/images/home.svg" />
+        <div class="text">首页</div>
+    </div>
+    <div class="center">
+        <form action="/Home/SanatoriumList" method="post">
+            <button type="submit"><i class="fa fa-search"></i></button>
+            <input name="name" placeholder="输入名称搜索项目" />
+        </form>
+        
+    </div>
+    <div class="right">
+            <img class="iconsvg" src="~/images/scan.svg" />
+            <div class="text">扫一扫</div>
+    </div>
+</div>
+
+<div class="swiper-container">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide"><a href="/Home/FileList"><img src="../images/banner/banner1.jpg" /></a></div>
+        <div class="swiper-slide"><a href="/Home/FileList"><img src="./images/banner/banner2.jpg" /></a></div>
+        <div class="swiper-slide"><a href="/Home/FileList"><img src="./images/banner/banner3.jpg" /></a></div>
+    </div>
+    <div class="swiper-pagination"></div>
+</div>
+
+<div class="mainregion">
+
+    <a href="/Home/SanatoriumList?region=市南区">
+        <div>
+            <img src="../images/icons/市南区.png" />
+            <p>市南区</p>
+        </div>
+    </a>
+    <a href="/Home/SanatoriumList?region=市北区">
+        <div>
+            <img src="../images/icons/市北区.png" />
+            <p>市北区</p>
+        </div>
+    </a>
+    <a href="/Home/SanatoriumList?region=李沧区">
+        <div>
+            <img src="../images/icons/李沧区.png" />
+            <p>李沧区</p>
+        </div>
+    </a>
+</div>
+
+<div class="homezhishi">
+    <div class="tlt">
+        <a href="/Home/ArticleList"> 知识<br />普及</a>
+    </div>
+    <div class="list">
+        @foreach (var item in Model.Articles)
+        {
+                <div><a href="/Home/ArticleInfo/@item.Id">@Html.DisplayFor(modelItem => item.Title)</a></div>
+        }
+    </div>
+</div>
+<div style="height:15px;background:#eee;"></div>
+<div class="homexiangmu">
+    <div class="tlt">最新项目</div>
+    <div class="list">
+        @foreach (var item in Model.Sanatoriums)
+        {
+            <div class="item">
+                <a href="/Home/SanatoriumInfo/@item.Id">
+                    <img src="@item.Pics" />
+                </a>
+                <div>
+                    @Html.Truncate(item.Name, 20)
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<div class="tabbar">
+    <div class="item">
+        <a href="/Home">
+            <img class="iconsvg" src="~/images/home_black.svg" />
+            <div>首页</div>
+        </a>
+    </div>
+    <div class="item">
+        <a href="/Home/SanatoriumList">
+            <img class="iconsvg" src="~/images/xiangmu_black.svg" />
+            <div>项目</div>
+        </a>
+    </div>
+    <div class="item">
+        <a href="#">
+            <img class="iconsvg" src="~/images/message_black.svg" />
+            <div>消息</div>
+        </a>
+    </div>
+    <div class="item">
+        <a href="#">
+            <img class="iconsvg" src="~/images/cart_black.svg" />
+            <div>购物车</div>
+        </a>
+    </div>
+    <div class="item">
+        <a href="#">
+            <img class="iconsvg" src="~/images/me_black.svg" />
+            <div>我</div>
+        </a>
+    </div>
+</div>
+
+
+
+
+

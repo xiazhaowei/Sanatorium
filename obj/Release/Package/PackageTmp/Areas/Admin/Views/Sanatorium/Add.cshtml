@@ -1,0 +1,328 @@
+﻿@model Sanatorium.Models.SanatoriumViewModel
+@using Sanatorium.Extensions
+@{
+    ViewBag.Title = "添加项目";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@section styles
+{
+    <!--pickers css-->
+    @Styles.Render("~/Scripts/bootstrap-datepicker/css/datepicker-custom.css")
+}
+
+<!-- page heading start-->
+<div class="page-heading">
+    <h3>
+        添加项目
+    </h3>
+    <ul class="breadcrumb">
+        <li>
+            <a href="#">主页</a>
+        </li>
+        <li class="active"> 添加项目 </li>
+    </ul>
+</div>
+<!-- page heading end-->
+<!--body wrapper start-->
+<div class="wrapper">
+    <div class="row">
+        <div class="col-lg-12">
+            <section class="panel">
+                <header class="panel-heading">
+                    添加项目
+                </header>
+                <div class="panel-body">
+                    <div class="form">
+                        <form class="cmxform form-horizontal adminex-form" id="commentForm" method="post" action="/Admin/Sanatorium/Add" novalidate="novalidate" enctype="multipart/form-data">
+
+                            <h4>项目基本信息</h4>
+                            
+                            <div class="form-group ">
+                                <label for="Name" class="control-label col-lg-2">名称 <span class="text-danger">*</span></label>
+                                <div class="col-lg-6">
+                                    @Html.HiddenFor(model => model.Id)
+                                    @Html.TextBoxFor(model => model.Name, new { @class = "form-control", placeholder = "项目名称", required = "" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-lg-2">上传图片</label>
+                                <div class="col-md-10 right">
+                                    <input type="file" id="uploadImageButton" name="uploadImageButton" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="hremove" class="control-label col-lg-2">地区 <span class="text-danger">*</span></label>
+                                <div class="col-lg-9">
+                                    @Html.DropDownList("Region", (IEnumerable<SelectListItem>)ViewData["regions"], new { @class = "form-control", style = "display:inline-block !important;width:160px" })
+                                    @Html.DropDownList("Street", (IEnumerable<SelectListItem>)ViewData["streets"], new { @class = "form-control", style = "display:inline-block !important;width:160px" })
+                                    @Html.DropDownList("Community", (IEnumerable<SelectListItem>)ViewData["communitys"], new { @class = "form-control", style = "display:inline-block !important;width:160px" })
+                                    <p class="help-block">您可以通过【系统管理】->【地区管理，街道管理，社区管理】管理您的区域</p>
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <label for="Address" class="control-label col-lg-2">地址 <span class="text-danger">*</span></label>
+                                <div class="col-lg-6">
+                                    @Html.TextBoxFor(model => model.Address, new { @class = "form-control", placeholder = "项目地址", required = "" })
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <label for="ShiShiOrg" class="control-label col-lg-2">实施单位 <span class="text-danger">*</span></label>
+                                <div class="col-lg-6">
+                                    @Html.TextBoxFor(model => model.ShiShiOrg, new { @class = "form-control", placeholder = "实施单位", required = "" })
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <label for="ShiShiOrg" class="control-label col-lg-2">施工单位 <span class="text-danger">*</span></label>
+                                <div class="col-lg-6">
+                                    @Html.TextBoxFor(model => model.ShiGongOrg, new { @class = "form-control", placeholder = "施工单位", required = "" })
+                                </div>
+                            </div>
+                            <h4>时间信息</h4>
+                            <div class="form-group ">
+                                <label for="StartTime" class="control-label col-lg-2">开工日期 <span class="text-danger">*</span></label>
+                                <div class="col-lg-6">
+                                    @Html.TextBoxFor(model => model.StartTime, new { @class = "form-control default-date-picker", placeholder = "开工日期", required = "", @readonly = "readonly" })
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <label for="FinishTime" class="control-label col-lg-2">竣工日期 <span class="text-danger">*</span></label>
+                                <div class="col-lg-6">
+                                    @Html.TextBoxFor(model => model.FinishTime, new { @class = "form-control default-date-picker", placeholder = "竣工日期", required = "", @readonly = "readonly" })
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <label for="PredictFinishTime" class="control-label col-lg-2">预计竣工日期 <span class="text-danger">*</span></label>
+                                <div class="col-lg-6">
+                                    @Html.TextBoxFor(model => model.PredictFinishTime, new { @class = "form-control default-date-picker", placeholder = "预计竣工日期", required = "", @readonly = "readonly" })
+                                </div>
+                            </div>
+                            
+
+                            <h4>房屋信息</h4>
+                            
+                            <div class="form-group ">
+                                <label for="StructureArea" class="control-label col-lg-2">建筑面积 <span class="text-danger">*</span></label>
+                                <div class="col-lg-6">
+                                    @Html.TextBoxFor(model => model.StructureArea, new { @class = "form-control", @type = "number", placeholder = "平", required = "required" })
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <label for="FinishArea" class="control-label col-lg-2">已完工面积 <span class="text-danger">*</span></label>
+                                <div class="col-lg-6">
+                                    @Html.TextBoxFor(model => model.FinishArea, new { @class = "form-control", @type = "number", placeholder = "平", required = "required" })
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <label for="DoingArea" class="control-label col-lg-2">在建面积 <span class="text-danger">*</span></label>
+                                <div class="col-lg-6">
+                                    @Html.TextBoxFor(model => model.DoingArea, new { @class = "form-control", @type = "number", placeholder = "平", required = "required" })
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <label for="ToDoArea" class="control-label col-lg-2">即将开工面积 <span class="text-danger">*</span></label>
+                                <div class="col-lg-6">
+                                    @Html.TextBoxFor(model => model.ToDoArea, new { @class = "form-control", @type = "number", placeholder = "平", required = "required" })
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <label for="BuildingsCount" class="control-label col-lg-2">楼栋数 <span class="text-danger">*</span></label>
+                                <div class="col-lg-6">
+                                    @Html.TextBoxFor(model => model.BuildingsCount, new { @class = "form-control", placeholder = "楼栋数", required = "" })
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <label for="BuildingsCount" class="control-label col-lg-2">使用脚手架数量 <span class="text-danger">*</span></label>
+                                <div class="col-lg-6">
+                                    @Html.TextBoxFor(model => model.StagingCount, new { @class = "form-control", placeholder = "脚手架数量", required = "" })
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <label for="BuildingsCount" class="control-label col-lg-2">建成年代 <span class="text-danger">*</span></label>
+                                <div class="col-lg-6">
+                                    @Html.TextBoxFor(model => model.CompletionYear, new { @class = "form-control", placeholder = "建成年代", required = "" })
+                                </div>
+                            </div>
+
+                            <h4>施工单位信息</h4>
+                            <div class="form-group ">
+                                <label for="BuildOrg" class="control-label col-lg-2">施工单位 <span class="text-danger">*</span></label>
+                                <div class="col-lg-6">
+                                    @Html.TextBoxFor(model => model.BuildOrg, new { @class = "form-control", placeholder = "单位名称", required = "required" })
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <label for="BuildOrgWeb" class="control-label col-lg-2">施工单位网址 <span class="text-danger">*</span></label>
+                                <div class="col-lg-6">
+                                    @Html.TextBoxFor(model => model.BuildOrgWeb, new { @class = "form-control", placeholder = "http://", required = "" })
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <label for="BuildOrgPrincipal" class="control-label col-lg-2">负责人 <span class="text-danger">*</span></label>
+                                <div class="col-lg-6">
+                                    @Html.TextBoxFor(model => model.BuildOrgPrincipal, new { @class = "form-control", placeholder = "单位负责人", required = "required" })
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <label for="BuildOrgPhone" class="control-label col-lg-2">负责人电话 <span class="text-danger">*</span></label>
+                                <div class="col-lg-6">
+                                    @Html.TextBoxFor(model => model.BuildOrgPhone, new { @class = "form-control", placeholder = "单位负责人电话", required = "required" })
+                                </div>
+                            </div>
+
+                            <h4>设计单位信息</h4>
+                            <div class="form-group ">
+                                <label for="DesignOrg" class="control-label col-lg-2">设计单位 <span class="text-danger">*</span></label>
+                                <div class="col-lg-6">
+                                    @Html.TextBoxFor(model => model.DesignOrg, new { @class = "form-control", placeholder = "单位名称", required = "required" })
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <label for="DesignOrgWeb" class="control-label col-lg-2">施工单位网址 <span class="text-danger">*</span></label>
+                                <div class="col-lg-6">
+                                    @Html.TextBoxFor(model => model.DesignOrgWeb, new { @class = "form-control", placeholder = "http://", required = "" })
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <label for="DesignOrgPrincipal" class="control-label col-lg-2">负责人 <span class="text-danger">*</span></label>
+                                <div class="col-lg-6">
+                                    @Html.TextBoxFor(model => model.DesignOrgPrincipal, new { @class = "form-control", placeholder = "单位负责人", required = "required" })
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <label for="DesignOrgPhone" class="control-label col-lg-2">负责人电话 <span class="text-danger">*</span></label>
+                                <div class="col-lg-6">
+                                    @Html.TextBoxFor(model => model.DesignOrgPhone, new { @class = "form-control", placeholder = "单位负责人电话", required = "required" })
+                                </div>
+                            </div>
+
+                            <h4>监理单位信息</h4>
+                            <div class="form-group ">
+                                <label for="SupervisionOrg" class="control-label col-lg-2">单位名称 <span class="text-danger">*</span></label>
+                                <div class="col-lg-6">
+                                    @Html.TextBoxFor(model => model.SupervisionOrg, new { @class = "form-control", placeholder = "单位名称", required = "required" })
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <label for="SupervisionOrgWeb" class="control-label col-lg-2">单位网址 <span class="text-danger">*</span></label>
+                                <div class="col-lg-6">
+                                    @Html.TextBoxFor(model => model.SupervisionOrgWeb, new { @class = "form-control", placeholder = "http://", required = "" })
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <label for="SupervisionOrgPrincipal" class="control-label col-lg-2">负责人 <span class="text-danger">*</span></label>
+                                <div class="col-lg-6">
+                                    @Html.TextBoxFor(model => model.SupervisionOrgPrincipal, new { @class = "form-control", placeholder = "单位负责人", required = "required" })
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <label for="SupervisionOrgPhone" class="control-label col-lg-2">负责人电话 <span class="text-danger">*</span></label>
+                                <div class="col-lg-6">
+                                    @Html.TextBoxFor(model => model.SupervisionOrgPhone, new { @class = "form-control", placeholder = "单位负责人电话", required = "required" })
+                                </div>
+                            </div>
+
+                            <h4>投诉电话</h4>
+                            <div class="form-group ">
+                                <label for="GongZiPhone" class="control-label col-lg-2">农民工工资服务电话 <span class="text-danger">*</span></label>
+                                <div class="col-lg-6">
+                                    @Html.TextBoxFor(model => model.GongZiPhone, new { @class = "form-control", placeholder = "电话号码", required = "required" })
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <label for="JuMinPhone" class="control-label col-lg-2">居民投诉电话 <span class="text-danger">*</span></label>
+                                <div class="col-lg-6">
+                                    @Html.TextBoxFor(model => model.JuMinPhone, new { @class = "form-control", placeholder = "电话号码", required = "" })
+                                </div>
+                            </div>
+                            <h4>备注</h4>
+                            <div class="form-group ">
+                                <label for="Remark" class="control-label col-lg-2">备注</label>
+                                <div class="col-lg-6">
+                                    @Html.TextAreaFor(model => model.Remark, new { @class = "form-control", placeholder = "" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-lg-offset-2 col-lg-6">
+                                    <button class="btn btn-primary" type="submit">下一步</button>
+                                    <button class="btn btn-default" type="reset">重填</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+
+@section scripts
+{
+
+    <!--pickers plugins-->
+@Scripts.Render("~/Scripts/bootstrap-datepicker/js/bootstrap-datepicker.js")
+    @Scripts.Render("~/Scripts/bootstrap-datepicker/js/locales/bootstrap-datepicker.zh-CN.min.js")
+    <!--pickers initialization-->
+    @Scripts.Render("~/Scripts/pickers-init.js")
+    <!--validate-->
+    @Scripts.Render("~/Scripts/jquery.validate.min.js")
+    @Scripts.Render("~/Scripts/validation-init.js")
+
+    <script>
+    $(document).ready(function(){
+            $(".custom-nav li").each(function(i,n){
+                $(n).removeClass("nav-active");
+                $(n).removeClass("active");
+            });
+
+            $('.nav_householder').addClass("nav-active");
+            $(".subnav_addhouseholder").addClass("active");
+
+            $("#HouseProperty").bind("change", function () {
+                var rightnumberwarp = $(".propertyrightnumberwarp");
+                if($(this).val()!="私房")
+                {
+                    rightnumberwarp.slideUp();
+                }
+                else
+                {
+                    rightnumberwarp.slideDown();
+                }
+            });
+        });
+
+        function setupFileLoaderButton(button, imageHolder) {
+            var upload = document.getElementById(button);
+            var holder = document.getElementById(imageHolder);
+
+            if (typeof window.FileReader === 'undefined') {
+                console.error('File API & FileReader not available');
+            }
+
+            upload.onchange = function (e) {
+                e.preventDefault();
+
+                var file = upload.files[0],
+                    reader = new FileReader();
+                reader.onload = function (event) {
+                    var img = new Image();
+                    img.src = event.target.result;
+                    if (img.src != undefined && img.src != '')
+                        img.className = 'thumbnail uploading-img';
+                    else
+                        img.className = '';
+                    holder.innerHTML = '';
+                    holder.appendChild(img);
+                };
+                reader.readAsDataURL(file);
+
+                return false;
+            };
+        }
+
+        setupFileLoaderButton('uploadImageButton', 'imageHolder');
+    </script>
+}
+

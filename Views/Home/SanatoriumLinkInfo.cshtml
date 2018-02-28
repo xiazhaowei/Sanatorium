@@ -1,0 +1,151 @@
+﻿@model Sanatorium.Models.Sanatorium
+@{
+    ViewBag.Title = "项目联系信息";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="header">
+    <div class="left">
+        <a href="javascript:window.history.back();"><i class="fa fa-2x fa-angle-left"></i></a>
+    </div>
+    <div class="center">
+        @Html.Truncate(Model.Name, 15)
+    </div>
+    <div class="right">
+
+    </div>
+</div>
+
+
+
+<div class="baseinfo">
+    <h4>@Model.Name</h4>
+</div>
+
+<div class="infowp">
+    <h4>建设单位</h4>
+    <table  class="table table-bordered table-striped">
+        <tr>
+            <td width="120"><span class="tlt">单位：</span></td>
+            <td>@Model.BuildOrg</td>
+        </tr>
+        @if(!string.IsNullOrEmpty(Model.BuildOrgWeb))
+        {
+        <tr>
+            <td width="120"><span class="tlt">官网：</span></td>
+            <td><a href="@Model.BuildOrgWeb" target="_blank">点击进入官网 <i class="fa  fa-angle-double-right"></i></a></td>
+        </tr>
+        }
+        <tr>
+            <td><span class="tlt">负责人：</span></td>
+            <td>@Model.BuildOrgPrincipal</td>
+        </tr>
+        <tr>
+            <td><span class="tlt">电话：</span></td>
+            <td>@Model.BuildOrgPhone</td>
+        </tr>
+    </table>
+</div>
+<div class="infowp">
+    <h4>设计单位</h4>
+    <table class="table table-bordered table-striped">
+        <tr>
+            <td width="120"><span class="tlt">单位：</span></td>
+            <td> @Model.DesignOrg</td>
+        </tr>
+        @if (!string.IsNullOrEmpty(Model.DesignOrgWeb))
+        {
+            <tr>
+                <td width="120"><span class="tlt">官网：</span></td>
+                <td><a href="@Model.DesignOrgWeb" target="_blank">点击进入官网 <i class="fa  fa-angle-double-right"></i></a></td>
+            </tr>
+        }
+        <tr>
+            <td><span class="tlt">负责人：</span></td>
+            <td>@Model.DesignOrgPrincipal</td>
+        </tr>
+        <tr>
+            <td><span class="tlt">电话：</span></td>
+            <td>@Model.DesignOrgPhone</td>
+        </tr>
+    </table>
+</div>
+<div class="infowp">
+    <h4>监理单位</h4>
+    <table class="table table-bordered table-striped">
+        <tr>
+            <td width="120"><span class="tlt">单位：</span></td>
+            <td> @Model.SupervisionOrg</td>
+        </tr>
+        @if (!string.IsNullOrEmpty(Model.SupervisionOrgWeb))
+        {
+            <tr>
+                <td width="120"><span class="tlt">官网：</span></td>
+                <td><a href="@Model.SupervisionOrgWeb" target="_blank">点击进入官网 <i class="fa  fa-angle-double-right"></i></a></td>
+            </tr>
+        }
+        <tr>
+            <td><span class="tlt">负责人：</span></td>
+            <td>@Model.SupervisionOrgPrincipal</td>
+        </tr>
+        <tr>
+            <td><span class="tlt">电话：</span></td>
+            <td>@Model.SupervisionOrgPhone</td>
+        </tr>
+    </table>
+</div>
+<div class="infowp">
+    <h4>投诉电话</h4>
+    <table class="table table-bordered table-striped">
+        <tr>
+            <td width="120"><span class="tlt">农民工工资投诉电话：</span></td>
+            <td>@Model.GongZiPhone</td>
+        </tr>
+        <tr>
+            <td><span class="tlt">居民投诉电话：</span></td>
+            <td>@Model.JuMinPhone</td>
+        </tr>
+    </table>
+</div>
+
+<div class="infowp">
+    <h4>治安小组</h4>
+    <table class="table table-bordered table-striped">
+        <tr>
+            <td width="120"><span class="tlt">组长：</span></td>
+            <td>@Model.ZhiAnPrincipal -@Model.ZhiAnPrincipalPhone</td>
+        </tr>
+        <tr>
+            <td><span class="tlt">小组成员：</span></td>
+            <td>@Model.ZhiAnMembers</td>
+        </tr>
+    </table>
+</div>
+<div class="infowp">
+    <h4>消防小组</h4>
+    <table class="table table-bordered table-striped">
+        <tr>
+            <td width="120"><span class="tlt">组长：</span></td>
+            <td>@Model.XiaoFangPrincipal -@Model.XiaoFangPrincipalPhone</td>
+        </tr>
+        <tr>
+            <td><span class="tlt">小组成员：</span></td>
+            <td>@Model.XiaoFangMembers</td>
+        </tr>
+    </table>
+</div>
+<div class="infowp">
+    <h4>紧急小组</h4>
+    <table class="table table-bordered table-striped">
+        <tr>
+            <td width="120"><span class="tlt">组长：</span></td>
+            <td>@Model.YingJiPrincipal -@Model.YingJiPrincipalPhone</td>
+        </tr>
+        <tr>
+            <td><span class="tlt">小组成员：</span></td>
+            <td>@Model.YingJiMembers</td>
+        </tr>
+    </table>
+</div>
+
+

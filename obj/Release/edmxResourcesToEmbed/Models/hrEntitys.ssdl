@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="hrEntitys.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="hrEntitysStoreContainer">
+    <EntitySet Name="Managers" EntityType="hrEntitys.Store.Managers" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="LoginLogs" EntityType="hrEntitys.Store.LoginLogs" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="RedHeadFiles" EntityType="hrEntitys.Store.RedHeadFiles" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Sanatoriums" EntityType="hrEntitys.Store.Sanatoriums" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Regions" EntityType="hrEntitys.Store.Regions" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Streets" EntityType="hrEntitys.Store.Streets" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Communitys" EntityType="hrEntitys.Store.Communitys" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Articles" EntityType="hrEntitys.Store.Articles" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="ManagerLoginLog" Association="hrEntitys.Store.ManagerLoginLog">
+      <End Role="Manager" EntitySet="Managers" />
+      <End Role="LoginLog" EntitySet="LoginLogs" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Managers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="Password" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="Role" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="Status" Type="nvarchar" Nullable="false" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="LoginLogs">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LoginTime" Type="datetime" Nullable="false" />
+    <Property Name="Ip" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="Client" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="ManagerId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RedHeadFiles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Type" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="PubTime" Type="datetime" Nullable="false" />
+    <Property Name="ZhiXingTime" Type="datetime" Nullable="false" />
+    <Property Name="Org" Type="nvarchar" Nullable="false" MaxLength="200" />
+    <Property Name="Title" Type="nvarchar" Nullable="false" MaxLength="200" />
+    <Property Name="FilePath" Type="nvarchar" Nullable="true" MaxLength="300" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Sanatoriums">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="400" />
+    <Property Name="Address" Type="nvarchar" Nullable="true" MaxLength="400" />
+    <Property Name="Pics" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="ShiShiOrg" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="ShiGongOrg" Type="nvarchar" Nullable="true" MaxLength="400" />
+    <Property Name="PredictFinishTime" Type="datetime" Nullable="true" />
+    <Property Name="StructureArea" Type="real" Nullable="false" />
+    <Property Name="FinishArea" Type="real" Nullable="false" />
+    <Property Name="DoingArea" Type="real" Nullable="false" />
+    <Property Name="ToDoArea" Type="real" Nullable="false" />
+    <Property Name="CompletionYear" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="BuildingsCount" Type="int" Nullable="false" />
+    <Property Name="StagingCount" Type="int" Nullable="false" />
+    <Property Name="ShiGongScope" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="ShiGongContent" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="StartTime" Type="datetime" Nullable="true" />
+    <Property Name="FinishTime" Type="datetime" Nullable="true" />
+    <Property Name="BuildOrg" Type="nvarchar" Nullable="true" MaxLength="400" />
+    <Property Name="BuildOrgPrincipal" Type="nvarchar" Nullable="true" MaxLength="100" />
+    <Property Name="BuildOrgPhone" Type="nvarchar" Nullable="true" MaxLength="100" />
+    <Property Name="BuildOrgWeb" Type="nvarchar" Nullable="true" MaxLength="200" />
+    <Property Name="DesignOrg" Type="nvarchar" Nullable="true" MaxLength="400" />
+    <Property Name="DesignOrgPrincipal" Type="nvarchar" Nullable="true" MaxLength="100" />
+    <Property Name="DesignOrgPhone" Type="nvarchar" Nullable="true" MaxLength="100" />
+    <Property Name="DesignOrgWeb" Type="nvarchar" Nullable="true" MaxLength="200" />
+    <Property Name="SupervisionOrg" Type="nvarchar" Nullable="true" MaxLength="400" />
+    <Property Name="SupervisionOrgPrincipal" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="SupervisionOrgPhone" Type="nvarchar" Nullable="true" MaxLength="100" />
+    <Property Name="SupervisionOrgWeb" Type="nvarchar" Nullable="true" MaxLength="200" />
+    <Property Name="Remark" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="GongZiPhone" Type="nvarchar" Nullable="true" MaxLength="100" />
+    <Property Name="JuMinPhone" Type="nvarchar" Nullable="true" MaxLength="100" />
+    <Property Name="AnQuanZhiDu" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="ShiGongZhidu" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="XiaoFangZhidu" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="ZhiAnPrincipal" Type="nvarchar" Nullable="true" MaxLength="100" />
+    <Property Name="ZhiAnPrincipalPhone" Type="nvarchar" Nullable="true" MaxLength="100" />
+    <Property Name="ZhiAnMembers" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="XiaoFangPrincipal" Type="nvarchar" Nullable="true" MaxLength="100" />
+    <Property Name="XiaoFangPrincipalPhone" Type="nvarchar" Nullable="true" MaxLength="100" />
+    <Property Name="XiaoFangMembers" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="YingJiPrincipal" Type="nvarchar" Nullable="true" MaxLength="100" />
+    <Property Name="YingJiPrincipalPhone" Type="nvarchar" Nullable="true" MaxLength="100" />
+    <Property Name="YingJiMembers" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="Region" Type="nvarchar" Nullable="true" MaxLength="200" />
+    <Property Name="Street" Type="nvarchar" Nullable="true" MaxLength="200" />
+    <Property Name="Community" Type="nvarchar" Nullable="true" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="Regions">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="400" />
+  </EntityType>
+  <EntityType Name="Streets">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RegionName" Type="nvarchar" Nullable="false" MaxLength="200" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="400" />
+  </EntityType>
+  <EntityType Name="Communitys">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StreetName" Type="nvarchar" Nullable="true" MaxLength="200" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="400" />
+  </EntityType>
+  <EntityType Name="Articles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" Nullable="false" MaxLength="400" />
+    <Property Name="Content" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+  </EntityType>
+  <Association Name="ManagerLoginLog">
+    <End Role="Manager" Type="hrEntitys.Store.Managers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="LoginLog" Type="hrEntitys.Store.LoginLogs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Manager">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="LoginLog">
+        <PropertyRef Name="ManagerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8799f86822aa47d8bf4f361ac40c0e08" Name="Diagram1" ZoomLevel="95" >
+        <EntityTypeShape EntityType="hrEntitys.Manager" Width="1.5" PointX="2.375" PointY="1.375" />
+        <EntityTypeShape EntityType="hrEntitys.LoginLog" Width="1.5" PointX="1.75" PointY="4.375" />
+        <EntityTypeShape EntityType="hrEntitys.RedHeadFile" Width="1.5" PointX="7.5" PointY="8.625" />
+        <AssociationConnector Association="hrEntitys.ManagerLoginLog" />
+        <EntityTypeShape EntityType="hrEntitys.Sanatorium" Width="2.75" PointX="3.625" PointY="4.375" />
+        <EntityTypeShape EntityType="hrEntitys.Region" Width="1.5" PointX="5.125" PointY="0.875" />
+        <EntityTypeShape EntityType="hrEntitys.Street" Width="1.5" PointX="6.125" PointY="2.625" />
+        <EntityTypeShape EntityType="hrEntitys.Community" Width="1.5" PointX="7" PointY="5.375" />
+        <EntityTypeShape EntityType="hrEntitys.Article" Width="1.5" PointX="1.25" PointY="9.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

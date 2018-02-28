@@ -1,0 +1,33 @@
+﻿@model Sanatorium.Models.Sanatorium
+@{
+    ViewBag.Title = "工程制度";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="header">
+    <div class="left">
+        <a href="javascript:window.history.back();"><i class="fa fa-2x fa-angle-left"></i></a>
+    </div>
+    <div class="center">
+        工程制度
+    </div>
+    <div class="right">
+    </div>
+</div>
+
+<div class="infowp">
+    <div>
+        <h4>安全制度</h4>
+        <div class="well">@(new HtmlString(Model.AnQuanZhiDu)) </div>
+    </div>
+    <div>
+        <h4>施工制度</h4>
+        <div class="well">@(new HtmlString(Model.ShiGongZhidu))  </div>
+    </div>
+    <div>
+        <h4>消防制度</h4>
+        <div class="well">@(new HtmlString(Model.XiaoFangZhidu)) </div>
+    </div>
+</div>
+
+

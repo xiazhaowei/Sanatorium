@@ -1,0 +1,73 @@
+﻿@model IEnumerable<Sanatorium.Models.RedHeadFile>
+@{
+    ViewBag.Title = "文件列表";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="header">
+    <div class="left">
+        <a href="javascript:window.history.back();"><i class="fa fa-2x fa-angle-left"></i></a>
+    </div>
+    <div class="center">
+        文件列表
+    </div>
+    <div class="right">
+    </div>
+</div>
+
+<div class="filelist">
+    @foreach (var item in Model)
+    {
+        <a href="/Home/FileInfo/@item.Id">
+            <div class="item">
+                <div class="lefticon">
+                    <img src="~/images/file.jpg" />
+                </div>
+                <div class="tlt">
+                    <h5>@Html.DisplayFor(modelItem => item.Title.Substring(35)) ...</h5>
+                    <div>发布日期： @Html.DisplayFor(modelItem => item.PubTime.ToShortDateString())</div>
+                    <div>发布机构： @Html.DisplayFor(modelItem => item.Org)</div>
+                </div>
+            </div>
+        </a>
+    }
+</div>
+@if (Model.Count() == 0)
+{
+    <div class="emptybox">没有内容</div>
+}
+
+
+<div class="tabbar">
+    <div class="item">
+        <a href="/Home">
+            <img class="iconsvg" src="~/images/home_black.svg" />
+            <div>首页</div>
+        </a>
+    </div>
+    <div class="item">
+        <a href="/Home/SanatoriumList">
+            <img class="iconsvg" src="~/images/xiangmu_black.svg" />
+            <div>项目</div>
+        </a>
+    </div>
+    <div class="item">
+        <a href="#">
+            <img class="iconsvg" src="~/images/message_black.svg" />
+            <div>消息</div>
+        </a>
+    </div>
+    <div class="item">
+        <a href="#">
+            <img class="iconsvg" src="~/images/cart_black.svg" />
+            <div>购物车</div>
+        </a>
+    </div>
+    <div class="item">
+        <a href="#">
+            <img class="iconsvg" src="~/images/me_black.svg" />
+            <div>我</div>
+        </a>
+    </div>
+</div>
+

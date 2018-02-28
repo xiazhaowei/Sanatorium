@@ -1,0 +1,245 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="hrEntitys" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+  <EntityContainer Name="hrEntitysContainer" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Managers" EntityType="hrEntitys.Manager" />
+    <EntitySet Name="LoginLogs" EntityType="hrEntitys.LoginLog" />
+    <EntitySet Name="RedHeadFiles" EntityType="hrEntitys.RedHeadFile" />
+    <AssociationSet Name="ManagerLoginLog" Association="hrEntitys.ManagerLoginLog">
+      <End Role="Manager" EntitySet="Managers" />
+      <End Role="LoginLog" EntitySet="LoginLogs" />
+    </AssociationSet>
+    <EntitySet Name="Sanatoriums" EntityType="hrEntitys.Sanatorium" />
+    <EntitySet Name="Regions" EntityType="hrEntitys.Region" />
+    <EntitySet Name="Streets" EntityType="hrEntitys.Street" />
+    <EntitySet Name="Communitys" EntityType="hrEntitys.Community" />
+    <EntitySet Name="Articles" EntityType="hrEntitys.Article" />
+  </EntityContainer>
+  <EntityType Name="Manager">
+    <Documentation>
+      <Summary>管理员</Summary>
+      <LongDescription>管理员</LongDescription>
+    </Documentation>
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="100" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="100" />
+    <Property Name="Role" Type="String" Nullable="false" MaxLength="100" />
+    <NavigationProperty Name="LoginLogs" Relationship="hrEntitys.ManagerLoginLog" FromRole="Manager" ToRole="LoginLog" />
+    <Property Name="Status" Type="String" Nullable="false" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="LoginLog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LoginTime" Type="DateTime" Nullable="false" />
+    <Property Name="Ip" Type="String" Nullable="false" MaxLength="100" />
+    <Property Name="Client" Type="String" Nullable="false" MaxLength="100" />
+    <NavigationProperty Name="Manager" Relationship="hrEntitys.ManagerLoginLog" FromRole="LoginLog" ToRole="Manager" />
+    <Property Name="ManagerId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RedHeadFile">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Type" Type="String" Nullable="false" MaxLength="100" />
+    <Property Name="PubTime" Type="DateTime" Nullable="false">
+      <Documentation>
+        <Summary>下发时间</Summary>
+        <LongDescription>下发时间</LongDescription>
+      </Documentation>
+    </Property>
+    <Property Name="ZhiXingTime" Type="DateTime" Nullable="false">
+      <Documentation>
+        <Summary>接受执行时间</Summary>
+        <LongDescription>接受执行时间</LongDescription>
+      </Documentation>
+    </Property>
+    <Property Name="Org" Type="String" Nullable="false" MaxLength="200">
+      <Documentation>
+        <Summary>下发机关</Summary>
+        <LongDescription>下发机关</LongDescription>
+      </Documentation>
+    </Property>
+    <Property Name="Title" Type="String" Nullable="false" MaxLength="200" />
+    <Property Name="FilePath" Type="String" Nullable="true" MaxLength="300" />
+    <Property Name="CreateTime" Type="DateTime" Nullable="false">
+      <Documentation>
+        <Summary>上传时间</Summary>
+        <LongDescription>上传时间</LongDescription>
+      </Documentation>
+    </Property>
+  </EntityType>
+  <Association Name="ManagerLoginLog">
+    <End Type="hrEntitys.Manager" Role="Manager" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="hrEntitys.LoginLog" Role="LoginLog" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Manager">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="LoginLog">
+        <PropertyRef Name="ManagerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Sanatorium">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="400" />
+    <Property Name="Address" Type="String" Nullable="true" MaxLength="400">
+      <Documentation>
+        <Summary>地址</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Pics" Type="String" Nullable="true" />
+    <Property Name="Description" Type="String" Nullable="true" />
+    <Property Name="ShiShiOrg" Type="String" Nullable="true">
+      <Documentation>
+        <Summary>实施单位</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="ShiGongOrg" Type="String" Nullable="true" MaxLength="400">
+      <Documentation>
+        <Summary>施工单位</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="PredictFinishTime" Type="DateTime" Nullable="true">
+      <Documentation>
+        <Summary>预计完工时间</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="StructureArea" Type="Single" Nullable="false">
+      <Documentation>
+        <Summary>建筑面积</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="FinishArea" Type="Single" Nullable="false">
+      <Documentation>
+        <Summary>已完工面积</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="DoingArea" Type="Single" Nullable="false">
+      <Documentation>
+        <Summary>在建面积</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="ToDoArea" Type="Single" Nullable="false">
+      <Documentation>
+        <Summary>待开工面积</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="CompletionYear" Type="String" Nullable="true" />
+    <Property Name="BuildingsCount" Type="Int32" Nullable="false">
+      <Documentation>
+        <Summary>楼栋数</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="StagingCount" Type="Int32" Nullable="false">
+      <Documentation>
+        <Summary>脚手架数量</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="ShiGongScope" Type="String" Nullable="true">
+      <Documentation>
+        <Summary>施工范围</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="ShiGongContent" Type="String" Nullable="true" />
+    <Property Name="StartTime" Type="DateTime" Nullable="true">
+      <Documentation>
+        <Summary>开工日期</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="FinishTime" Type="DateTime" Nullable="true">
+      <Documentation>
+        <Summary>竣工日期</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="BuildOrg" Type="String" Nullable="true" MaxLength="400">
+      <Documentation>
+        <Summary>建设单位</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="BuildOrgPrincipal" Type="String" Nullable="true" MaxLength="100" />
+    <Property Name="BuildOrgPhone" Type="String" Nullable="true" MaxLength="100" />
+    <Property Name="BuildOrgWeb" Type="String" Nullable="true" MaxLength="200" />
+    <Property Name="DesignOrg" Type="String" Nullable="true" MaxLength="400" />
+    <Property Name="DesignOrgPrincipal" Type="String" Nullable="true" MaxLength="100">
+      <Documentation>
+        <Summary>负责人</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="DesignOrgPhone" Type="String" Nullable="true" MaxLength="100" />
+    <Property Name="DesignOrgWeb" Type="String" Nullable="true" MaxLength="200" />
+    <Property Name="SupervisionOrg" Type="String" Nullable="true" MaxLength="400">
+      <Documentation>
+        <Summary>监理单位</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="SupervisionOrgPrincipal" Type="String" Nullable="true" />
+    <Property Name="SupervisionOrgPhone" Type="String" Nullable="true" MaxLength="100" />
+    <Property Name="SupervisionOrgWeb" Type="String" Nullable="true" MaxLength="200" />
+    <Property Name="Remark" Type="String" Nullable="true">
+      <Documentation>
+        <Summary>备注</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="GongZiPhone" Type="String" Nullable="true" MaxLength="100" />
+    <Property Name="JuMinPhone" Type="String" Nullable="true" MaxLength="100" />
+    <Property Name="AnQuanZhiDu" Type="String" Nullable="true" />
+    <Property Name="ShiGongZhidu" Type="String" Nullable="true" />
+    <Property Name="XiaoFangZhidu" Type="String" Nullable="true" />
+    <Property Name="ZhiAnPrincipal" Type="String" Nullable="true" MaxLength="100" />
+    <Property Name="ZhiAnPrincipalPhone" Type="String" Nullable="true" MaxLength="100" />
+    <Property Name="ZhiAnMembers" Type="String" Nullable="true" />
+    <Property Name="XiaoFangPrincipal" Type="String" Nullable="true" MaxLength="100" />
+    <Property Name="XiaoFangPrincipalPhone" Type="String" Nullable="true" MaxLength="100" />
+    <Property Name="XiaoFangMembers" Type="String" Nullable="true" />
+    <Property Name="YingJiPrincipal" Type="String" Nullable="true" MaxLength="100" />
+    <Property Name="YingJiPrincipalPhone" Type="String" Nullable="true" MaxLength="100" />
+    <Property Name="YingJiMembers" Type="String" Nullable="true" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" />
+    <Property Name="Region" Type="String" Nullable="true" MaxLength="200" />
+    <Property Name="Street" Type="String" Nullable="true" MaxLength="200" />
+    <Property Name="Community" Type="String" Nullable="true" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="Region">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="400" />
+  </EntityType>
+  <EntityType Name="Street">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RegionName" Type="String" Nullable="false" MaxLength="200" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="400" />
+  </EntityType>
+  <EntityType Name="Community">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StreetName" Type="String" Nullable="true" MaxLength="200" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="400" />
+  </EntityType>
+  <EntityType Name="Article">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" Nullable="false" MaxLength="400" />
+    <Property Name="Content" Type="String" Nullable="false" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" />
+  </EntityType>
+</Schema>

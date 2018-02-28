@@ -1,0 +1,219 @@
+﻿@model Sanatorium.Models.Sanatorium
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<!-- page heading start-->
+<div class="page-heading">
+    <h3>
+        项目详情
+    </h3>
+    <ul class="breadcrumb">
+        <li>
+            <a href="#">主页</a>
+        </li>
+        <li class="active"> 项目详情 </li>
+    </ul>
+</div>
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel">
+            <div class="panel-body">
+                <div class="profile-desk">
+                    <h1>@Model.Name</h1>
+                    <p class="designation">@(new HtmlString(Model.Description)) </p>
+                    <div>
+                        <div>开工时间：@Model.StartTime </div>
+                        <div>竣工时间：@Model.FinishTime 预计竣工时间：@Model.PredictFinishTime</div>
+                        <div>地区：@Model.Region  @Model.Street @Model.Community  详细地址：@Model.Address</div> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel">
+            <div class="panel-body">
+                <ul class="p-info">
+                    <li>
+                        <div class="title">建筑面积</div>
+                        <div class="desk">@Model.StructureArea 平</div>
+                    </li>
+                    <li>
+                        <div class="title">已完工面积</div>
+                        <div class="desk">@Model.FinishArea 平</div>
+                    </li>
+                    <li>
+                        <div class="title">即将开工面积</div>
+                        <div class="desk">@Model.ToDoArea 平</div>
+                    </li>
+                    <li>
+                        <div class="title">在建面积</div>
+                        <div class="desk">@Model.DoingArea 平</div>
+                    </li>
+                    <li>
+                        <div class="title">楼栋数量</div>
+                        <div class="desk">@Model.BuildingsCount</div>
+                    </li>
+                    <li>
+                        <div class="title">使用脚手架数量</div>
+                        <div class="desk">@Model.StagingCount</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <div class="panel">
+            <div class="panel-body">
+                <ul class="p-info">
+                    <li>
+                        <div class="title">建筑单位</div>
+                        <div class="desk">@Model.BuildOrg</div>
+                    </li>
+                    <li>
+                        <div class="title">单位负责人</div>
+                        <div class="desk">@Model.BuildOrgPrincipal</div>
+                    </li>
+                    <li>
+                        <div class="title">负责人电话</div>
+                        <div class="desk">@Model.BuildOrgPhone</div>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="panel">
+            <div class="panel-body">
+                <ul class="p-info">
+                    <li>
+                        <div class="title">设计单位</div>
+                        <div class="desk">@Model.DesignOrg</div>
+                    </li>
+                    <li>
+                        <div class="title">单位负责人</div>
+                        <div class="desk">@Model.DesignOrgPrincipal</div>
+                    </li>
+                    <li>
+                        <div class="title">负责人电话</div>
+                        <div class="desk">@Model.DesignOrgPhone</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="panel">
+            <div class="panel-body">
+                <ul class="p-info">
+                    <li>
+                        <div class="title">监理单位</div>
+                        <div class="desk">@Model.SupervisionOrg</div>
+                    </li>
+                    <li>
+                        <div class="title">单位负责人</div>
+                        <div class="desk">@Model.SupervisionOrgPrincipal</div>
+                    </li>
+                    <li>
+                        <div class="title">负责人电话</div>
+                        <div class="desk">@Model.SupervisionOrgPhone</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-12">
+        <div class="panel">
+            <div class="panel-body p-states">
+                <div class="summary pull-left">
+                    <h4> 安全制度</h4>
+                    <p>@Model.AnQuanZhiDu</p>
+                    <h4> 施工制度</h4>
+                    <p>@Model.ShiGongZhidu</p>
+                    <h4> 消防制度</h4>
+                    <p>@Model.XiaoFangZhidu</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <div class="col-md-4">
+            <div class="panel">
+                <div class="panel-body">
+                    <h5>消防小组</h5>
+                    <ul class="p-info">
+                        <li>
+                            <div class="title">组长</div>
+                            <div class="desk">@Model.XiaoFangPrincipal -@Model.XiaoFangPrincipalPhone</div>
+                        </li>
+                        <li>
+                            <div class="title">组员</div>
+                            <div class="desk">@Model.XiaoFangMembers</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="panel">
+                <div class="panel-body">
+                    <h5>紧急小组</h5>
+                    <ul class="p-info">
+                        <li>
+                            <div class="title">组长</div>
+                            <div class="desk">@Model.YingJiPrincipal -@Model.YingJiPrincipalPhone</div>
+                        </li>
+                        <li>
+                            <div class="title">组员</div>
+                            <div class="desk">@Model.YingJiMembers</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="panel">
+                <div class="panel-body">
+                    <h5>治安小组</h5>
+                    <ul class="p-info">
+                        <li>
+                            <div class="title">组长</div>
+                            <div class="desk">@Model.ZhiAnPrincipal -@Model.ZhiAnPrincipalPhone</div>
+                        </li>
+                        <li>
+                            <div class="title">组员</div>
+                            <div class="desk">@Model.ZhiAnMembers</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+   
+</div>
+
+@section scripts{
+    <script>
+    $(document).ready(function(){
+            $(".custom-nav li").each(function(i,n){
+                $(n).removeClass("nav-active");
+                $(n).removeClass("active");
+            });
+
+            $('.nav_householder').addClass("nav-active");
+            $(".subnav_householder").addClass("active");
+    });
+    </script>
+}
+
+

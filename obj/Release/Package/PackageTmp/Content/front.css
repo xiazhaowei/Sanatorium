@@ -1,0 +1,281 @@
+﻿body {
+  background: #fff;
+  max-width: 600px;
+}
+div,
+p {
+  font-size: 13px;
+}
+.header {
+  display: flex;
+  align-items: center;
+  background: #6c9;
+  color: #fff;
+  padding: 8px 0;
+}
+.header .left {
+  width: 15%;
+  text-align: center;
+}
+.header .left a {
+  color: #fff;
+}
+.header .center {
+  width: 70%;
+  font-size: 15px;
+  color: #fff;
+  text-align: center;
+}
+.header .right {
+  width: 15%;
+  text-align: center;
+}
+.searchbar {
+  display: flex;
+  align-items: center;
+  background: #6c9;
+  color: #fff;
+  padding: 5px 0;
+}
+.searchbar a {
+  color: #fff;
+}
+.searchbar .left {
+  width: 15%;
+  text-align: center;
+}
+.searchbar .left i {
+  font-size: 22px;
+}
+.searchbar .left .text {
+  font-size: 10px;
+}
+.searchbar .center {
+  width: 70%;
+  position: relative;
+}
+.searchbar .center input {
+  width: 100%;
+  padding: 5px 0;
+  border-radius: 50px;
+  border: 1px solid #52BE88;
+  text-indent: 20px;
+  outline: none;
+}
+.searchbar .center button {
+  position: absolute;
+  top: 5px;
+  right: 8px;
+  z-index: 100;
+  color: #666;
+  border: 0;
+  font-size: 18px;
+  background: #fff;
+}
+.searchbar .right {
+  width: 15%;
+  text-align: center;
+}
+.searchbar .right .text {
+  font-size: 10px;
+}
+.iconsvg {
+  width: 22px;
+  height: 22px;
+}
+.swiper-container {
+  height: 220px;
+  background: #fcfcfc;
+}
+.swiper-container img {
+  width: 100%;
+  height: 100%;
+}
+.mainregion {
+  display: flex;
+  background: #fff;
+  border-top: 1px solid #eee;
+  padding-top: 10px;
+}
+.mainregion a {
+  display: inline-block;
+  width: 33.3%;
+  color: #999;
+  text-decoration: none;
+}
+.mainregion div {
+  text-align: center;
+}
+.mainregion div img {
+  display: inline-block;
+  background-color: #52BE88;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-bottom: 5px;
+}
+.homezhishi {
+  background: #fff;
+  display: flex;
+  padding: 10px;
+}
+.homezhishi a {
+  color: #630;
+  text-decoration: none;
+}
+.homezhishi .tlt {
+  width: 40px;
+  font-size: 15px;
+  color: #630;
+  font-weight: 600;
+  text-align: center;
+}
+.homezhishi .list {
+  padding-left: 10px;
+}
+.homezhishi .list a {
+  color: #999;
+  text-decoration: none;
+}
+.filterwp {
+  display: flex;
+}
+.filterwp .drdown {
+  width: 33.3%;
+}
+.filterwp .drdown select {
+  width: 100%;
+}
+.homexiangmu {
+  background: #fff;
+  margin-bottom: 50px;
+}
+.homexiangmu .tlt {
+  font-size: 15px;
+  text-align: center;
+  padding: 10px;
+}
+.homexiangmu .list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 10px;
+}
+.homexiangmu .list .item {
+  width: 46%;
+  text-align: center;
+  padding-bottom: 10px;
+}
+.homexiangmu .list .item img {
+  width: 100%;
+  height: 180px;
+}
+.homexiangmu .list .item div {
+  padding-top: 5px;
+}
+.tabbar {
+  max-width: 600px;
+  position: fixed;
+  display: flex;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  padding: 5px 0;
+  background: #fff;
+  border-top: 1px solid #eee;
+}
+.tabbar .item {
+  width: 20%;
+  text-align: center;
+}
+.tabbar .item a {
+  color: #666;
+  text-decoration: none;
+}
+.tabbar .item a i {
+  font-size: 23px;
+}
+.sanpicwp img {
+  width: 100%;
+}
+.baseinfo {
+  padding: 10px;
+}
+.infowp {
+  padding: 10px;
+}
+.infowp p {
+  color: #999;
+}
+.infowp .tlt {
+  display: inline-block;
+  color: #666;
+  font-weight: bold;
+}
+.articlelist {
+  padding: 10px;
+}
+.articlelist .item {
+  display: flex;
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+}
+.articlelist .item a {
+  color: #999;
+  text-decoration: none;
+}
+.articlelist .item .lefticon {
+  width: 20%;
+  text-align: center;
+  padding-right: 10px;
+}
+.articlelist .item .lefticon img {
+  width: 50px;
+  height: 50px;
+  border-radius: 100px;
+}
+.articlelist .item .tlt {
+  width: 80%;
+  color: #999;
+}
+.filelist {
+  padding: 10px;
+}
+.filelist .item {
+  display: flex;
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+}
+.filelist .item a {
+  color: #999;
+  text-decoration: none;
+}
+.filelist .item .lefticon {
+  width: 30%;
+  text-align: center;
+  padding-right: 10px;
+}
+.filelist .item .lefticon img {
+  width: 60px;
+  height: 90px;
+}
+.filelist .item .tlt {
+  width: 70%;
+  color: #999;
+}
+.articleinfo {
+  padding: 10px;
+}
+.fileinfo {
+  padding: 10px;
+}
+.fileinfo img {
+  width: 100%;
+}
+.emptybox {
+  padding: 30px 0;
+  text-align: center;
+}
+.htmlcontent img {
+  width: 100% !important;
+}

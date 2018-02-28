@@ -1,0 +1,26 @@
+﻿@model Sanatorium.Models.Sanatorium
+@{
+    ViewBag.Title = "项目简介";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="header">
+    <div class="left">
+        <a href="javascript:window.history.back();"><i class="fa fa-2x fa-angle-left"></i></a>
+    </div>
+    <div class="center">
+        项目简介
+    </div>
+    <div class="right">
+
+    </div>
+</div>
+
+
+
+<div class="baseinfo">
+    <div class="htmlcontent">@(new HtmlString(Model.Description)) </div>
+    
+</div>
+
+

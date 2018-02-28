@@ -1,0 +1,109 @@
+﻿@model Sanatorium.Models.Sanatorium
+@{
+    ViewBag.Title = "项目详情";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="header">
+    <div class="left">
+        <a href="javascript:window.history.back();"><i class="fa fa-2x fa-angle-left"></i></a>
+    </div>
+    <div class="center">
+        @Html.Truncate(Model.Name, 15)
+    </div>
+    <div class="right">
+    </div>
+</div>
+
+
+<div class="sanpicwp">
+    <img src="@Model.Pics" style="max-height:400px" />
+</div>
+<div class="baseinfo">
+    <h4>@Model.Name</h4>
+    @if(!string.IsNullOrEmpty(Model.Description))
+    {
+        <p>@Html.Truncate(Html.LostHTML(Model.Description), 40) <a class="pull-right" href="/Home/SanatoriumDescInfo/@Model.Id">【详细..】</a></p>
+    }
+</div>
+
+<div class="infowp">
+    <h4>项目概况</h4>
+    <table class="table table-bordered table-striped">
+        <tr>
+            <td width="120"><span class="tlt">项目地区：</span> </td><td>@Model.Region @Model.Street @Model.Community</td>
+        </tr>
+        <tr>
+            <td><span class="tlt">详细地址：</span></td><td>@Model.Address</td>
+        </tr>
+        <tr>
+            <td><span class="tlt">实施单位：</span></td><td>@Model.ShiShiOrg</td>
+        </tr>
+        <tr>
+            <td><span class="tlt">施工单位：</span></td><td>@Model.ShiGongOrg</td>
+        </tr>
+        <tr>
+            <td><span class="tlt">开工日期：</span></td><td>@(Model.StartTime.HasValue? Model.StartTime.Value.ToShortDateString() :"")</td>
+        </tr>
+        <tr>
+            <td><span class="tlt">竣工日期：</span></td><td>@(Model.FinishTime.HasValue? Model.FinishTime.Value.ToShortDateString():"")</td>
+        </tr>
+        <tr>
+            <td><span class="tlt">预计竣工日期：</span></td><td>@(Model.PredictFinishTime.HasValue? Model.PredictFinishTime.Value.ToShortDateString():"")</td>
+        </tr>
+        
+    </table>
+    
+</div>
+
+<div class="infowp">
+    <h4>施工进度</h4>
+    <table class="table table-bordered table-striped">
+        <tr>
+            <td width="120"><span class="tlt">建筑面积：</span></td><td>@Model.StructureArea 平</td>
+        </tr>
+        <tr>
+            <td><span class="tlt">在建面积：</span></td><td>@Model.DoingArea 平</td>
+        </tr>
+        <tr>
+            <td><span class="tlt">完工面积：</span></td><td>@Model.FinishArea 平</td>
+        </tr>
+        <tr>
+            <td><span class="tlt">待开工面积：</span> </td><td>@Model.ToDoArea 平</td>
+        </tr>
+        <tr>
+            <td><span class="tlt">楼栋数合计：</span></td><td>@Model.BuildingsCount 栋</td>
+        </tr>
+        <tr>
+            <td><span class="tlt">使用脚手架数量：</span> </td><td>@Model.StagingCount 个</td>
+        </tr>
+    </table>
+</div>
+
+@if (!string.IsNullOrEmpty(Model.ShiGongScope))
+{
+    <div class="baseinfo">
+        <h4>施工范围</h4>
+        <p>@Html.Truncate(Html.LostHTML(Model.ShiGongScope), 40) <a class="pull-right" href="/Home/SanatoriumScopeInfo/@Model.Id">【详细..】</a></p>
+    </div>
+}
+
+@if (!string.IsNullOrEmpty(Model.ShiGongContent))
+{
+    <div class="baseinfo">
+        <h4>施工内容</h4>
+        <p>@Html.Truncate(Html.LostHTML(Model.ShiGongContent), 40) <a class="pull-right" href="/Home/SanatoriumContentInfo/@Model.Id">【详细..】</a></p>
+    </div>
+}
+        
+<div class="baseinfo">
+    <h4>联系方式</h4>
+    <p>查看各施工单位、设计单位、监理单位、相关小组及投诉电话信息 <a class="pull-right" href="/Home/SanatoriumLinkInfo/@Model.Id">【详细..】</a></p>
+</div>
+
+<div class="baseinfo">
+    <h4>工程制度</h4>
+    <p>查看工程安全制度、施工制度、消防制度等 <a class="pull-right" href="/Home/SanatoriumZhiDuInfo/@Model.Id">【详细..】</a></p>
+</div>
+
+

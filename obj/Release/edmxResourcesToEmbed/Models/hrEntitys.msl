@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="hrEntitysStoreContainer" CdmEntityContainer="hrEntitysContainer">
+    <EntitySetMapping Name="Managers">
+      <EntityTypeMapping TypeName="IsTypeOf(hrEntitys.Manager)">
+        <MappingFragment StoreEntitySet="Managers">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Role" ColumnName="Role" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LoginLogs">
+      <EntityTypeMapping TypeName="IsTypeOf(hrEntitys.LoginLog)">
+        <MappingFragment StoreEntitySet="LoginLogs">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="LoginTime" ColumnName="LoginTime" />
+          <ScalarProperty Name="Ip" ColumnName="Ip" />
+          <ScalarProperty Name="Client" ColumnName="Client" />
+          <ScalarProperty Name="ManagerId" ColumnName="ManagerId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RedHeadFiles">
+      <EntityTypeMapping TypeName="IsTypeOf(hrEntitys.RedHeadFile)">
+        <MappingFragment StoreEntitySet="RedHeadFiles">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="PubTime" ColumnName="PubTime" />
+          <ScalarProperty Name="ZhiXingTime" ColumnName="ZhiXingTime" />
+          <ScalarProperty Name="Org" ColumnName="Org" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="FilePath" ColumnName="FilePath" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sanatoriums">
+      <EntityTypeMapping TypeName="IsTypeOf(hrEntitys.Sanatorium)">
+        <MappingFragment StoreEntitySet="Sanatoriums">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Pics" ColumnName="Pics" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="ShiShiOrg" ColumnName="ShiShiOrg" />
+          <ScalarProperty Name="ShiGongOrg" ColumnName="ShiGongOrg" />
+          <ScalarProperty Name="PredictFinishTime" ColumnName="PredictFinishTime" />
+          <ScalarProperty Name="StructureArea" ColumnName="StructureArea" />
+          <ScalarProperty Name="FinishArea" ColumnName="FinishArea" />
+          <ScalarProperty Name="DoingArea" ColumnName="DoingArea" />
+          <ScalarProperty Name="ToDoArea" ColumnName="ToDoArea" />
+          <ScalarProperty Name="CompletionYear" ColumnName="CompletionYear" />
+          <ScalarProperty Name="BuildingsCount" ColumnName="BuildingsCount" />
+          <ScalarProperty Name="StagingCount" ColumnName="StagingCount" />
+          <ScalarProperty Name="ShiGongScope" ColumnName="ShiGongScope" />
+          <ScalarProperty Name="ShiGongContent" ColumnName="ShiGongContent" />
+          <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+          <ScalarProperty Name="FinishTime" ColumnName="FinishTime" />
+          <ScalarProperty Name="BuildOrg" ColumnName="BuildOrg" />
+          <ScalarProperty Name="BuildOrgPrincipal" ColumnName="BuildOrgPrincipal" />
+          <ScalarProperty Name="BuildOrgPhone" ColumnName="BuildOrgPhone" />
+          <ScalarProperty Name="BuildOrgWeb" ColumnName="BuildOrgWeb" />
+          <ScalarProperty Name="DesignOrg" ColumnName="DesignOrg" />
+          <ScalarProperty Name="DesignOrgPrincipal" ColumnName="DesignOrgPrincipal" />
+          <ScalarProperty Name="DesignOrgPhone" ColumnName="DesignOrgPhone" />
+          <ScalarProperty Name="DesignOrgWeb" ColumnName="DesignOrgWeb" />
+          <ScalarProperty Name="SupervisionOrg" ColumnName="SupervisionOrg" />
+          <ScalarProperty Name="SupervisionOrgPrincipal" ColumnName="SupervisionOrgPrincipal" />
+          <ScalarProperty Name="SupervisionOrgPhone" ColumnName="SupervisionOrgPhone" />
+          <ScalarProperty Name="SupervisionOrgWeb" ColumnName="SupervisionOrgWeb" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="GongZiPhone" ColumnName="GongZiPhone" />
+          <ScalarProperty Name="JuMinPhone" ColumnName="JuMinPhone" />
+          <ScalarProperty Name="AnQuanZhiDu" ColumnName="AnQuanZhiDu" />
+          <ScalarProperty Name="ShiGongZhidu" ColumnName="ShiGongZhidu" />
+          <ScalarProperty Name="XiaoFangZhidu" ColumnName="XiaoFangZhidu" />
+          <ScalarProperty Name="ZhiAnPrincipal" ColumnName="ZhiAnPrincipal" />
+          <ScalarProperty Name="ZhiAnPrincipalPhone" ColumnName="ZhiAnPrincipalPhone" />
+          <ScalarProperty Name="ZhiAnMembers" ColumnName="ZhiAnMembers" />
+          <ScalarProperty Name="XiaoFangPrincipal" ColumnName="XiaoFangPrincipal" />
+          <ScalarProperty Name="XiaoFangPrincipalPhone" ColumnName="XiaoFangPrincipalPhone" />
+          <ScalarProperty Name="XiaoFangMembers" ColumnName="XiaoFangMembers" />
+          <ScalarProperty Name="YingJiPrincipal" ColumnName="YingJiPrincipal" />
+          <ScalarProperty Name="YingJiPrincipalPhone" ColumnName="YingJiPrincipalPhone" />
+          <ScalarProperty Name="YingJiMembers" ColumnName="YingJiMembers" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="Region" ColumnName="Region" />
+          <ScalarProperty Name="Street" ColumnName="Street" />
+          <ScalarProperty Name="Community" ColumnName="Community" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Regions">
+      <EntityTypeMapping TypeName="IsTypeOf(hrEntitys.Region)">
+        <MappingFragment StoreEntitySet="Regions">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Streets">
+      <EntityTypeMapping TypeName="IsTypeOf(hrEntitys.Street)">
+        <MappingFragment StoreEntitySet="Streets">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="RegionName" ColumnName="RegionName" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Communitys">
+      <EntityTypeMapping TypeName="IsTypeOf(hrEntitys.Community)">
+        <MappingFragment StoreEntitySet="Communitys">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="StreetName" ColumnName="StreetName" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Articles">
+      <EntityTypeMapping TypeName="IsTypeOf(hrEntitys.Article)">
+        <MappingFragment StoreEntitySet="Articles">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Content" ColumnName="Content" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

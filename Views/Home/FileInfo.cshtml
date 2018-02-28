@@ -1,0 +1,35 @@
+﻿@model Sanatorium.Models.RedHeadFile
+@{
+    ViewBag.Title = "文件详情";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="header">
+    <div class="left">
+        <a href="javascript:window.history.back();"><i class="fa fa-2x fa-angle-left"></i></a>
+    </div>
+    <div class="center">
+        文件内容
+    </div>
+    <div class="right">
+    </div>
+</div>
+
+
+
+<div class="fileinfo">
+    <h4>@Model.Title</h4>
+    <p>@Model.PubTime</p>
+    <p class="fileslist">
+        @{
+            var imgsrcs = Model.FilePath.Split(';');
+            foreach (string imgsrc in imgsrcs)
+            {
+                <a href="@imgsrc" target="_blank"><img  src="@imgsrc" /></a>
+            }
+
+        }
+    </p>
+</div>
+
+

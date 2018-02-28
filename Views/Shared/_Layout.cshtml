@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/style.css")
+    @Styles.Render("~/Content/front.css")
+    @Styles.Render("~/Scripts/swiper/swiper.min.css")
+
+</head>
+<body>
+    <div>
+        @RenderBody()
+    </div>
+    @Scripts.Render("~/Scripts/jquery-1.10.2.min.js")
+    @Scripts.Render("~/Scripts/swiper/swiper.min.js")
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var swiper = new Swiper('.swiper-container', {
+                pagination: {
+                    el: '.swiper-pagination',
+                },
+                autoplay: {
+                    delay: 2500,
+                    disableOnInteraction: false,
+                },
+            });
+        })
+    </script>
+    @RenderSection("scripts", required: false)
+</body>
+</html>
