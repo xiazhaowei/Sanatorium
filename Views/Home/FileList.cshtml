@@ -24,9 +24,9 @@
                     <img src="~/images/file.jpg" />
                 </div>
                 <div class="tlt">
-                    <h5>@Html.DisplayFor(modelItem => item.Title.Substring(35)) ...</h5>
-                    <div>发布日期： @Html.DisplayFor(modelItem => item.PubTime.ToShortDateString())</div>
-                    <div>发布机构： @Html.DisplayFor(modelItem => item.Org)</div>
+                    <h5>@Html.Truncate(item.Title,35)...</h5>
+                    <div>发布日期： @item.PubTime.ToShortDateString()</div>
+                    <div>发布机构： @item.Org</div>
                 </div>
             </div>
         </a>

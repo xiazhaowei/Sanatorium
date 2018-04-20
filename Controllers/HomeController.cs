@@ -17,9 +17,9 @@ namespace Sanatorium.Controllers
         {
             var homeViewModel = new HomeViewModels();
             //获取最新项目
-            homeViewModel.Sanatoriums = db.Sanatoriums.Take(16).ToList();
+            homeViewModel.Sanatoriums = db.Sanatoriums.OrderByDescending(x=>x.CreatedOn).Take(16).ToList();
             //获取最新新闻
-            homeViewModel.Articles = db.Articles.Take(2).ToList();
+            homeViewModel.Articles = db.Articles.OrderByDescending(x=>x.CreatedOn).Take(2).ToList();
             homeViewModel.Regions = db.Regions.Take(3).ToList();
 
             return View(homeViewModel);
